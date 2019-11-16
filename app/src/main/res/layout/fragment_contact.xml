@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.ContactFragment">
+
+    <LinearLayout
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorGrey"
+            />
+
+        <TextView
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginStart="35dp"
+            android:textColor="@color/colorDarkGrey"
+            android:layout_marginTop="20dp"
+            android:gravity="start"
+            android:text="Get In Touch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:hint="Name"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp"
+            android:padding="7dp"
+            android:background="@drawable/box_border"
+            android:id="@+id/nameText"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:hint="Email"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp"
+            android:padding="7dp"
+            android:background="@drawable/box_border"
+            android:id="@+id/emailText"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:hint="Feedback"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp"
+            android:padding="7dp"
+            android:background="@drawable/box_border"
+            android:id="@+id/commentText"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:inputType="text|textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:lines="5"/>
+
+        <Button
+            android:minHeight="40dip"
+            android:textColor="@color/colorWhite"
+            android:text="SEND"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="35dp"
+            android:layout_gravity="end"
+            android:background="@color/colorMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mbg2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/connectHead"
+                android:layout_alignParentTop="true"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="20dp"
+                android:text="Connect WIth Us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/mailTxt"
+                android:layout_below="@+id/connectHead"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/mailIcon"
+                android:layout_marginTop="6dp"
+                android:text="@string/tex_mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/mailIcon"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginTop="8dp"
+                android:tint="@color/colorWhite"
+                android:layout_below="@+id/connectHead"
+                android:src="@drawable/mail_icn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/instaTxt"
+                android:layout_below="@+id/mailIcon"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/instaIcon"
+                android:layout_marginTop="20dp"
+                android:text="@string/tex_insta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/instaIcon"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginTop="22dp"
+                android:tint="@color/colorWhite"
+                android:layout_below="@+id/mailIcon"
+                android:src="@drawable/mail_icn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+            <TextView
+                android:id="@+id/twitTxt"
+                android:layout_below="@+id/instaIcon"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/twitIcon"
+                android:layout_marginTop="20dp"
+                android:text="@string/tex_insta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/twitIcon"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginTop="22dp"
+                android:tint="@color/colorWhite"
+                android:layout_below="@+id/instaIcon"
+                android:src="@drawable/mail_icn"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

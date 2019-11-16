@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey"
+        />
+
+    <ScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_alignParentTop="true"
+                android:id="@+id/articleImg"
+                android:background="@android:color/black"
+                android:scaleType="centerCrop"
+                android:src="@drawable/punch_2"
+                android:layout_width="match_parent"
+                android:layout_height="230dp" />
+
+            <TextView
+                android:layout_below="@+id/articleImg"
+                android:background="@color/colorLGrey"
+                android:textStyle="bold"
+                android:id="@+id/titleText"
+                android:text="How many of us are  to end the wold asw e know it hi ajsksksksk sksksks sksksksks sksk"
+                android:textSize="18sp"
+                android:padding="8dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/titleText"
+                android:background="@color/colorLGrey"
+                android:textColor="@color/colorDark"
+                android:paddingStart="8dp"
+                android:paddingBottom="6dp"
+                android:text="24th November, 2012"
+                android:id="@+id/dateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_below="@+id/titleText"
+                android:background="@color/colorLGrey"
+                android:textColor="@color/colorDark"
+                android:paddingEnd="8dp"
+                android:layout_alignParentEnd="true"
+                android:paddingBottom="6dp"
+                android:text="PunchNG"
+                android:id="@+id/sourceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/dateText"
+                android:textColor="@color/colorDark"
+                android:padding="10dp"
+                android:id="@+id/bodyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+
+</RelativeLayout>

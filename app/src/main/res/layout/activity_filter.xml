@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FilterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_alignParentTop="true"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGrey"
+        android:theme="@style/ToolBarStyle"
+        />
+
+    <LinearLayout
+        android:background="@color/colorDarkGrey"
+        android:orientation="vertical"
+        android:id="@+id/optionPane"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/countrySelect"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="26dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:text="Country"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/sourceSelect"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="26dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:text="Sources"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/dateRangeSelect"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="26dp"
+            android:paddingStart="16dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:text="Date Range"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+    </LinearLayout>
+
+    <FrameLayout
+
+        android:background="@color/colorWhite"
+        android:layout_toEndOf="@+id/optionPane"
+        android:orientation="vertical"
+        android:id="@+id/choicePane"
+        android:padding="6dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+    <View
+        android:layout_centerHorizontal="true"
+        android:id="@+id/centerShim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
+    <Button
+        android:textColor="@color/colorGrey"
+        android:text="Clear ALL"
+        android:background="@drawable/btn_border"
+        android:layout_toStartOf="@+id/centerShim"
+        android:id="@+id/resetBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:textColor="@color/colorWhite"
+        android:text="Apply"
+        android:background="@color/colorMain"
+        android:layout_toEndOf="@+id/centerShim"
+        android:id="@+id/applyBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
