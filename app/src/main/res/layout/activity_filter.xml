@@ -8,80 +8,107 @@
     android:layout_height="match_parent"
     tools:context=".FilterActivity">
 
-    <android.support.v7.widget.Toolbar
+    <android.support.design.widget.AppBarLayout
         android:layout_alignParentTop="true"
-        android:id="@+id/toolbar"
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorGrey"
-        android:theme="@style/ToolBarStyle"
-        />
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrey"
+            android:theme="@style/ToolBarStyle"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
 
     <LinearLayout
-        android:background="@color/colorDarkGrey"
-        android:orientation="vertical"
-        android:id="@+id/optionPane"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="wrap_content"
+
+        android:layout_above="@+id/applyBtn"
+        android:weightSum="1"
+        android:orientation="horizontal"
+        android:layout_below="@+id/appbar"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/countrySelect"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="26dp"
-            android:paddingStart="16dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            android:text="Country"
-            android:maxLines="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_weight="0.3"
+            android:background="@color/colorDarkGrey"
+            android:orientation="vertical"
+            android:id="@+id/optionPane"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/countrySelect"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="26dp"
+                android:paddingStart="16dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:text="Country"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
-        <TextView
-            android:id="@+id/sourceSelect"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="26dp"
-            android:paddingStart="16dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            android:text="Sources"
-            android:maxLines="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/sourceSelect"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="26dp"
+                android:paddingStart="16dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:text="Sources"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/dateRangeSelect"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp"
-            android:paddingEnd="26dp"
-            android:paddingStart="16dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp"
-            android:text="Date Range"
-            android:maxLines="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/dateRangeSelect"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="26dp"
+                android:paddingStart="16dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp"
+                android:text="Date Range"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="0.7"
+            android:id="@+id/fragment_container"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/itemRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <include layout="@layout/date_range_view"/>
+
+        </LinearLayout>
 
 
 
     </LinearLayout>
 
-    <FrameLayout
 
-        android:background="@color/colorWhite"
-        android:layout_toEndOf="@+id/optionPane"
-        android:orientation="vertical"
-        android:id="@+id/choicePane"
-        android:padding="6dp"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
 
     <View
         android:layout_centerHorizontal="true"

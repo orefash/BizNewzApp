@@ -17,13 +17,14 @@ public class GeneralUtils {
         sourceFormat.setTimeZone(utc);
         Date convertedDate = sourceFormat.parse(dateStr);
         return destFormat.format(convertedDate);
-
-//        DateTimeFormatter sourceFormat  = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-//        DateTimeFormatter targetFormat  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//
-//        LocalDateTime dateTime          = LocalDateTime.parse(dateStr, sourceFormat);
-//        String formatedDateTime         = dateTime.atZone(ZoneId.of("UTC")).format(targetFormat);
-//        return  formatedDateTime;
+    }
+    public static String convertLToNewFormat(String dateStr) throws ParseException {
+        TimeZone utc = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat sourceFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
+        SimpleDateFormat destFormat = new SimpleDateFormat("MMMM dd, yyyy");
+        sourceFormat.setTimeZone(utc);
+        Date convertedDate = sourceFormat.parse(dateStr);
+        return destFormat.format(convertedDate);
     }
 
 }

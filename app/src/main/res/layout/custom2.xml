@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.android.volley.toolbox.NetworkImageView
+        <ImageView
             android:id="@+id/articleImg"
             android:layout_above="@+id/txt"
             android:scaleType="centerCrop"

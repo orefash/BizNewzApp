@@ -9,4 +9,8 @@
     <string name="filterTxt"><u>Filter</u></string>
     <string name="tex_mail"><u>texgraphicscompany@gmail.com</u></string>
     <string name="tex_insta"><u>\@tex_sdgc</u></string>
+    <string name="app_version">Version 1.0</string>
+    <string name="app_desc">The BizNewz mobile app brings the most trending business news, from Nigeria and the world, to you.</string>
+    <string name="newsapi">International news sourced from the NewsApi.org</string>
+    <string name="tex_graphics_company">Tex Graphics Company</string>
 </resources>

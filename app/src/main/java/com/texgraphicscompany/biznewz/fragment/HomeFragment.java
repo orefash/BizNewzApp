@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Activity mActivity;
+    private int selectedNews = 0;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,6 +60,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 /// button click event
                     Intent intent = new Intent(mActivity, FilterActivity.class);
+                    intent.putExtra("news_type", selectedNews);
 
                     mActivity.startActivity(intent);
             }
@@ -66,7 +68,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
+        tabLayout = view.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         // Inflate the layout for this fragment
@@ -77,7 +79,7 @@ public class HomeFragment extends Fragment {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -91,7 +93,7 @@ public class HomeFragment extends Fragment {
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
@@ -104,9 +106,25 @@ public class HomeFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new LocalNewsFragment(), "NATIONAL NEWS");
-        adapter.addFragment(new IntNewsFragment(), "WORLD NEWS");
+        adapter.addFragment(new LocalNewsFragment(), "NIGERIAN");
+        adapter.addFragment(new IntNewsFragment(), "INTERNATIONAL");
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                selectedNews = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 

@@ -103,32 +103,33 @@ public class LocalNewsFragment extends Fragment {
         String mJSONURLString = "http://pastebin.com/raw/2bW31yqa";
 
         // Initialize a new JsonObjectRequest instance
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 url,
                 null,
-                new Response.Listener<JSONObject>() {
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                         // Do something with response
-                        //mTextView.setText(response.toString());
-//                        Log.e(TAG, response.toString());
 
                         try{
 
-                            if (response.getString("status").equalsIgnoreCase("ok")){
-                                JSONArray articleObj = response.getJSONArray("articles");
-                                for(int i = 0; i < articleObj.length(); i++){
-                                    JSONObject obj = articleObj.getJSONObject(i);
-                                    ArticleDetails ad = new ArticleDetails();
-                                    JSONObject sourceObj = obj.getJSONObject("source");
-                                    ad.setSource(sourceObj.getString("name"));
-                                    ad.setTitle(obj.getString("title"));
-                                    ad.setImgUrl(obj.getString("urlToImage"));
-                                    ad.setUrl(obj.getString("url"));
-                                    ad.setArticle(obj.getString("content"));
+                            if (response.length()>0){
+//                                JSONArray articleObj = response.getJSONArray("articles");
+                                for(int i = 0; i < response.length(); i++){
+                                    JSONObject obj = response.getJSONObject(i);
 
-                                    ad.setDate(GeneralUtils.convertToNewFormat(obj.getString("publishedAt")));
+                                    ArticleDetails ad = new ArticleDetails();
+                                    ad.setSource(obj.getString("source"));
+                                    String title = obj.getString("title") + " - " + obj.getString("source");
+                                    ad.setTitle(title);
+                                    ad.setImgUrl(obj.getString("img_url"));
+                                    ad.setUrl(obj.getString("url"));
+//                                    ad.setArticle(obj.getString("content"));
+                                    ad.setArticle("");
+
+//                                    ad.setDate(GeneralUtils.convertToNewFormat(obj.getString("publishedAt")));
+                                    ad.setDate(GeneralUtils.convertLToNewFormat(obj.getString("publish_date")));
 
 
 
@@ -167,15 +168,17 @@ public class LocalNewsFragment extends Fragment {
     private void getNewsData(){
         Uri.Builder builder = new Uri.Builder();
 
-        builder.scheme("https")
-                .authority("newsapi.org")
-                .appendPath("v2")
-                .appendPath("top-headlines")
-                .appendQueryParameter("category", "business")
-                .appendQueryParameter("country", "us")
-                .appendQueryParameter("apiKey", "fd9c20a03ba04f8880116cf23a89b8d0");
+//        https://biznewzapi.herokuapp.com/articles/
 
-        String newsUrl = builder.build().toString();
+        builder.scheme("https")
+                .authority("biznewzapi.herokuapp.com")
+                .appendPath("articles/");
+//                .appendQueryParameter("category", "business")
+//                .appendQueryParameter("country", "us")
+//                .appendQueryParameter("apiKey", "fd9c20a03ba04f8880116cf23a89b8d0");
+
+//        String newsUrl = builder.build().toString();
+        String newsUrl = "https://biznewzapi.herokuapp.com/articles/";
 
         Log.e("News CONSTRUCT", newsUrl);
 

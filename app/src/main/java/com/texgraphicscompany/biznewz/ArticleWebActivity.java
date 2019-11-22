@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -32,14 +34,51 @@ public class ArticleWebActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
 
+        title = getIntent().getStringExtra("title");
+        content = getIntent().getStringExtra("content");
+        url = getIntent().getStringExtra("url");
+        imgUrl = getIntent().getStringExtra("img");
+        source = getIntent().getStringExtra("source");
+        date = getIntent().getStringExtra("date");
+
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setSupportZoom(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setMax(100);
+        progressBar.setProgress(1);
 
         try{
-
-//            initWebView();
-            webView.setWebViewClient(new WebViewClient());
             webView.loadUrl(url);
+//            initWebView();
+//            webView.setWebViewClient(new WebViewClient());
+            webView.setWebChromeClient(new WebChromeClient() {
+                public void onProgressChanged(WebView webView, int progress){
+                    progressBar.setProgress(progress);
+                }
+            });
+
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageStarted(WebView view, String url, Bitmap ficon){
+                    super.onPageStarted(view, url, ficon);
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url){
+                    view.loadUrl(url);
+                    return true;
+                }
+
+                @Override
+                public void onPageFinished(WebView view, String url){
+                    progressBar.setVisibility(View.GONE);
+                }
+
+            });
 
         }catch (Exception ex){
 
@@ -62,76 +101,22 @@ public class ArticleWebActivity extends AppCompatActivity {
         );
     }
 
-    private class MyWebChromeClient extends WebChromeClient {
-        Context context;
-
-        public MyWebChromeClient(Context context) {
-            super();
-            this.context = context;
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.article_menu, menu);
+        return true;
     }
 
-    private void initWebView() {
-        webView.setWebChromeClient(new MyWebChromeClient(this));
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                progressBar.setVisibility(View.VISIBLE);
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                webView.loadUrl(url);
-                return true;
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                progressBar.setVisibility(View.GONE);
-                invalidateOptionsMenu();
-            }
-
-            @Override
-            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                super.onReceivedError(view, request, error);
-                progressBar.setVisibility(View.GONE);
-                invalidateOptionsMenu();
-            }
-        });
-        webView.clearCache(true);
-        webView.clearHistory();
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setHorizontalScrollBarEnabled(false);
-        webView.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getPointerCount() > 1) {
-                    //Multi touch detected
-                    return true;
-                }
-
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN: {
-                        // save the x
-                        m_downX = event.getX();
-                    }
-                    break;
-
-                    case MotionEvent.ACTION_MOVE:
-                    case MotionEvent.ACTION_CANCEL:
-                    case MotionEvent.ACTION_UP: {
-                        // set x so that it doesn't move
-                        event.setLocation(m_downX, event.getY());
-                    }
-                    break;
-                }
-
-                return false;
-            }
-        });
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        int id = menuItem.getItemId();
+        if(id == R.id.save_menu){
+            return true;
+        }
+        else if(id == R.id.share_menu){
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
 

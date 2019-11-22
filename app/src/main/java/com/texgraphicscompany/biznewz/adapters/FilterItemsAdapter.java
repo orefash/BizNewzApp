@@ -24,16 +24,13 @@ public class FilterItemsAdapter extends RecyclerView.Adapter<FilterItemsAdapter.
 
         private List<String> items;
         private Context context;
+        private ImageView selectedImg = null;
         private int selectedPosition = 0, type = -1; // type: 0 = country; 1 = source
         private SessionFilters sessionFilters;
-        String countrySelect, sourceSelect;
-
-
-        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
+        private String countrySelect, sourceSelect;
 
 
         private String TAG = "In recycler adapter: ";
-
 
 
         public FilterItemsAdapter(List<String> items, Context context, int type) {
@@ -56,19 +53,26 @@ public class FilterItemsAdapter extends RecyclerView.Adapter<FilterItemsAdapter.
         }
 
         @Override
-        public void onBindViewHolder(final FilterViewHolder holder, final int mPosition) {
+        public void onBindViewHolder(final FilterViewHolder holder,  int mPosition) {
 
             final String article = items.get(mPosition);
             holder.titleView.setText(article);
             if(type == 0){
+                Log.e("In filter recycle: ", "Country filter");
                 if (countrySelect.equals("all")){
+
+                    Log.e("In filter recycle: ", "All Countries");
                     if (mPosition == 0){
                         holder.photo.setVisibility(View.VISIBLE);
+                        selectedImg = holder.photo;
                         selectedPosition = mPosition;
                     }
                 }else{
+                    Log.e("In filter recycle: ", "NOt All Countries- "+countrySelect);
+
                     if (article.equals(countrySelect)){
                         holder.photo.setVisibility(View.VISIBLE);
+                        selectedImg = holder.photo;
                         selectedPosition = mPosition;
                     }
                 }
@@ -76,11 +80,13 @@ public class FilterItemsAdapter extends RecyclerView.Adapter<FilterItemsAdapter.
                 if (sourceSelect.equals("all")){
                     if (mPosition == 0){
                         holder.photo.setVisibility(View.VISIBLE);
+                        selectedImg = holder.photo;
                         selectedPosition = mPosition;
                     }
                 }else{
                     if (article.equals(sourceSelect)){
                         holder.photo.setVisibility(View.VISIBLE);
+                        selectedImg = holder.photo;
                         selectedPosition = mPosition;
                     }
                 }
@@ -92,15 +98,14 @@ public class FilterItemsAdapter extends RecyclerView.Adapter<FilterItemsAdapter.
                 @Override
                 public void onClick(View v) {
                     /// button click event
-                    if(selectedPosition != mPosition){
-
+                    if(selectedPosition != holder.getAdapterPosition()){
+                        if(selectedImg!=null)
+                            selectedImg.setVisibility(View.INVISIBLE);
                         holder.photo.setVisibility(View.VISIBLE);
-                        notifyItemChanged(selectedPosition);
-                        selectedPosition = mPosition;
-                        if(type == 0)
-                            sessionFilters.setCountryFilter(article);
-                        else
-                            sessionFilters.setSourceFilter(article);
+                        selectedImg = holder.photo;
+//                        notifyDataSetChanged();
+//                        notifyItemChanged(selectedPosition);
+                        selectedPosition = holder.getAdapterPosition();
 
                     }
 
@@ -127,7 +132,7 @@ public class FilterItemsAdapter extends RecyclerView.Adapter<FilterItemsAdapter.
                 super(view);
                 titleView =  view.findViewById(R.id.itemText);
                 photo = view.findViewById(R.id.selectIcn);
-                relativeLayout = view.findViewById(R.id.articleCard);
+                relativeLayout = view.findViewById(R.id.filterItem);
             }
         }
 

@@ -45,9 +45,6 @@ public class IntNewsFragment extends Fragment {
     private MainNewsAdapter agentsRecyclerAdapter;
     private ProgressDialog pDialog;
 
-    //    private static final String url = "http://pastebin.com/raw/2bW31yqa";
-//    private static final String url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=fd9c20a03ba04f8880116cf23a89b8d0";
-
 
     public IntNewsFragment() {
         // Required empty public constructor
@@ -143,7 +140,7 @@ public class IntNewsFragment extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error){
                         // Do something when error occurred
-                        Log.e(TAG, error.getMessage());
+                        Log.e(TAG, error.getMessage()+" ");
                         hidePDialog();
                     }
                 }

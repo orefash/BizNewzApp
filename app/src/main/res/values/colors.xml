@@ -9,4 +9,5 @@
     <color name="colorDarkGrey">#202020</color>
     <color name="colorGrey">#555555</color>
     <color name="colorLGrey">#eee7ea</color>
+    <color name="colorSuccess">#4bb543</color>
 </resources>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:background="@color/colorMain"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/mlogo"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMain"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMain"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_version"
+        android:textSize="18sp"
+        android:layout_marginTop="0dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorDarkGrey"
+        android:gravity="center_horizontal"
+        android:text="@string/app_desc"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMain"
+        android:gravity="center_horizontal"
+        android:text="@string/newsapi"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMain"
+        android:gravity="center_horizontal"
+        android:text="@string/tex_graphics_company"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMain"
+        android:gravity="center_horizontal"
+        android:text="All Rights Reserved"
+        android:textSize="16sp"
+        android:layout_marginTop="0dp"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMain"
+        android:gravity="center_horizontal"
+        android:text="2019"
+        android:textSize="16sp"
+        android:layout_marginTop="0dp"
+
+        />
+
+
+
+
+</LinearLayout>

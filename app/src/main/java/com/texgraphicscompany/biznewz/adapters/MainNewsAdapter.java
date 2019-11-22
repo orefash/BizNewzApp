@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.squareup.picasso.Picasso;
 import com.texgraphicscompany.biznewz.ArticleWebActivity;
 import com.texgraphicscompany.biznewz.NewsActivity;
 import com.texgraphicscompany.biznewz.R;
@@ -29,12 +30,7 @@ public class MainNewsAdapter  extends RecyclerView.Adapter<MainNewsAdapter.Artic
         private List<ArticleDetails> articles;
         private Context context;
 
-        ImageLoader imageLoader = AppController.getInstance().getImageLoader();
-
-
         private String TAG = "In recycler adapter: ";
-
-
 
         public MainNewsAdapter(List<ArticleDetails> articles, Context context) {
             this.articles = articles;
@@ -54,8 +50,6 @@ public class MainNewsAdapter  extends RecyclerView.Adapter<MainNewsAdapter.Artic
         @Override
         public void onBindViewHolder(ArticleViewHolder holder, int position) {
 
-            if (imageLoader == null)
-                imageLoader = AppController.getInstance().getImageLoader();
 
             final int mPosition = position;
             final ArticleDetails article = articles.get(mPosition);
@@ -64,8 +58,16 @@ public class MainNewsAdapter  extends RecyclerView.Adapter<MainNewsAdapter.Artic
 
                 holder.dateView.setText(article.getDate());
 
+//
+//            holder.photo.setImageUrl(article.getImgUrl(), imageLoader);
+            try{
+                Picasso.get()
+                        .load(article.getImgUrl())
+                        //    .placeholder(R.drawable.image_name)
+                        .into(holder.photo);
+            }catch (Exception ex){
 
-            holder.photo.setImageUrl(article.getImgUrl(), imageLoader);
+            }
 
             holder.articeCard.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -98,7 +100,7 @@ public class MainNewsAdapter  extends RecyclerView.Adapter<MainNewsAdapter.Artic
         public class ArticleViewHolder extends RecyclerView.ViewHolder {
 
             public TextView titleView, sourceView, dateView;
-            public NetworkImageView photo;
+            public ImageView photo;
             public RelativeLayout articeCard;
 
             public ArticleViewHolder(View view) {

@@ -12,6 +12,7 @@ public class FilterParams {
     public Map<String, String> getCountries(){
 
         Map<String, String> countryMap = new HashMap<>();
+//        countryMap.put("", "all");
         countryMap.put("Australia", "au");
         countryMap.put("Netherlands", "nl");
         countryMap.put("France", "fr");
