@@ -8,3 +8,10 @@
 </table>
 
 ## Screenshots
+
+![Promo Image](screenshots/IMG-20191207-WA0016.jpg)
+
+
+![Screenshot 1](screenshots/sc1.png)
+
+![Screenshot 1](screenshots/sc2.png)
