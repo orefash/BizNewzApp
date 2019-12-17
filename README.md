@@ -3,6 +3,10 @@
 <tr>
 <td>
   Android App for displaying aggregated business news from Nigerian and other International news sources.
+<br>  <br>
+  Get it at:
+  <br>
+  https://play.google.com/store/apps/details?id=com.texgraphicscompany.biznewz
 </td>
 </tr>
 </table>
